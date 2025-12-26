@@ -1,5 +1,6 @@
 -- Base de datos para control de licencias de aplicación Android
-USE defaultdb;
+create database railway;
+USE railway;
 
 -- =============================================
 -- TABLA DE ROLES (NO MODIFICABLE)
@@ -439,7 +440,7 @@ SELECT 'Configuraciones por defecto:' AS info;
 SELECT * FROM configuracion_sistema;
 
 
-USE defaultdb;
+USE railway;
 ALTER TABLE usuarios 
 ADD COLUMN device_id VARCHAR(255) NULL AFTER telefono;
 
@@ -448,7 +449,7 @@ ADD COLUMN device_id VARCHAR(255) NULL AFTER telefono;
 -- Ejecutar en MySQL/MariaDB
 -- =============================================
 
-USE defaultdb;
+USE railway;
 
 -- =============================================
 -- TABLA DE GRUPOS (PARA LA APP)
@@ -616,19 +617,19 @@ SELECT 'Base de datos actualizada con éxito' AS mensaje;
 SELECT 'Nuevas tablas creadas:' AS info;
 SELECT TABLE_NAME 
 FROM INFORMATION_SCHEMA.TABLES 
-WHERE TABLE_SCHEMA = 'defaultdb' 
+WHERE TABLE_SCHEMA = 'railway' 
 AND TABLE_NAME IN ('grupos_capturas', 'screenshots', 'analisis_grupos');
 
 SELECT 'Vistas creadas:' AS info;
 SELECT TABLE_NAME 
 FROM INFORMATION_SCHEMA.VIEWS 
-WHERE TABLE_SCHEMA = 'defaultdb' 
+WHERE TABLE_SCHEMA = 'railway' 
 AND TABLE_NAME = 'vista_grupos_estadisticas';
 
 
 -- Ejecuta esto en tu MySQL para crear la tabla que falta
 
-USE defaultdb;
+USE railway;
 
 -- =============================================
 -- TABLA DE VIAJES REGISTRADOS (HISTORIAL)
@@ -655,7 +656,7 @@ SHOW CREATE TABLE viajes_registrados;
 
 -- Ejecuta esto en tu MySQL para crear la tabla de análisis detallado
 
-USE defaultdb;
+USE railway;
 
 -- Tabla para guardar el análisis detallado de cada viaje
 CREATE TABLE IF NOT EXISTS analisis_detallado (
@@ -734,7 +735,7 @@ SELECT 'Tabla analisis_detallado creada exitosamente' AS mensaje;
 
 -- Ejecuta esto en tu MySQL para agregar las columnas faltantes
 
-USE defaultdb;
+USE railway;
 
 -- Agregar columna id_grupo a viajes_registrados
 ALTER TABLE viajes_registrados 
